@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Status Swisscom</string>
+    <string name="title_sms">SMS</string>
+    <string name="title_data">Data</string>
+    
+    <string name="monthly_credit_title">Monthly credit</string>
+    <string name="remaining_credit_title">Remaining credit</string>
+    <string name="remaining_credit_per_day_title">Remaining credit per day</string>
+    <string name="valid_until_title">Credit available until</string>
+    <string name="state_date_title">State date</string>
+    
+    <string name="data_unit">%s MB</string>
+    <string name="date_format">dd.MM.yy</string>
+    
+    <string name="sms_number">444</string>
+    
+    <string name="request_button">Get the information</string>
+    
+    <string name="error_wrongsms_title">Error in a SMS!</string>
+    <string name="error_wrongsms_text">Could not analyse the SMS coming from Swisscom. Here is its text:\n\n%s</string>
+    
+    <string name="error_nosms_title">Did not receive any SMS!</string>
+    <string name="error_nosms_text">Swisscom did not reply to the request. The service might be under maintenance. Please try again later.</string>
+    
+    <string name="too_bad">Too bad !</string>
+    <string name="ok">Ok</string>
+    
+    <string name="recommend">Share the app</string>
+    <string name="about">About</string>
+    
+    <string name="recommand_share_title">Select an action</string>
+    <string name="recommand_title">Try out Status Swisscom !</string>
+    <string name="recommand_text">Try out Status Swisscom, an Android app that let you consult the remaining SMS and Internet data credit. \n\nhttps://market.android.com/details?id=pro.schmid.android.solde</string>
+    
+    <string name="rate">Rate the app!</string>
+    <string name="no_market">Cannot find the market on your phone.</string>
+    
+    <string name="about_title">About</string>
+    <string name="about_text">Data is coming from the "Status" service from Swisscom. ©\n\nJonas Schmid\nandroid@schmid.pro</string>
+    
+</resources>

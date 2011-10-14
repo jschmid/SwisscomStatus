@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Solde Swisscom</string>
+    <string name="title_sms">SMS</string>
+    <string name="title_data">Données</string>
+    
+    <string name="monthly_credit_title">Crédit mensuel</string>
+    <string name="remaining_credit_title">Crédit restant</string>
+    <string name="remaining_credit_per_day_title">Crédit restant par jour</string>
+    <string name="valid_until_title">Crédit valable jusqu\'au</string>
+    <string name="state_date_title">Etat au</string>
+    
+    
+    
+    
+    
+    
+    <string name="request_button">Obtenir les informations</string>
+    
+    <string name="error_wrongsms_title">Erreur dans un SMS!</string>
+    <string name="error_wrongsms_text">Impossible d\'analyser le SMS reçu de Swissom. Le texte est le suivant:\n\n%s</string>
+    
+    <string name="error_nosms_title">Pas reçu de SMS!</string>
+    <string name="error_nosms_text">Swisscom n\'a pas répondu à la demande. Le service est probablement en maintenance. Veuillez réessayer plus tard.</string>
+    
+    <string name="too_bad">Dommage !</string>
+    
+    
+    <string name="recommend">Recommander</string>
+    <string name="about">À propos</string>
+    
+    <string name="recommand_share_title">Sélectionnez une action</string>
+    <string name="recommand_title">Essaie Solde Swisscom !</string>
+    <string name="recommand_text">Essaie Solde Swisscom, une application Android qui permet de consulter ton solde de SMS et de donnée Internet. \n\nhttps://market.android.com/details?id=pro.schmid.android.solde</string>
+    
+    <string name="rate">Mettre une note!</string>
+    <string name="no_market">Impossible de trouver le market sur votre téléphone.</string>
+    
+    <string name="about_title">À propos</string>
+    <string name="about_text">Les données proviennent du service "Solde" de Swisscom. ©\n\nJonas Schmid\nandroid@schmid.pro</string>
+    
+</resources>

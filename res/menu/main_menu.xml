@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  
+	<item
+		android:title="@string/recommend"
+		android:id="@+id/menu_recommend"
+		android:icon="@android:drawable/ic_menu_share" />
+  
+	<item
+		android:title="@string/rate"
+		android:id="@+id/menu_rate"
+		android:icon="@android:drawable/btn_star_big_on" />
+  
+	<item
+		android:title="@string/about"
+		android:id="@+id/menu_about"
+		android:icon="@android:drawable/ic_dialog_info" />
+    
+</menu>
