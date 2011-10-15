@@ -33,11 +33,6 @@ public class Main extends Activity {
 
 	private int WAITING_TIME = 15000;
 
-	@SuppressWarnings("unused")
-	private static String DEBUG_SMS = "NATEL xtra-liberty SMS: crédit mensuel: 100, crédit restant: 19, crédit valable jusqu'au: 01.07.2011, état au 23.06.2011";
-	@SuppressWarnings("unused")
-	private static String DEBUG_DATA = "Unités utilisées \"NATEL xtra-liberty mezzo\": crédit mensuel: 500 MB, crédit restant: 324.24 MB, crédit valable jusqu'au: 01.07.2011, état au 23.06.2011";
-
 	private SmsManager smsManager;
 	private ContentMatcher smsMatcher;
 	private ContentMatcher dataMatcher;
@@ -116,18 +111,15 @@ public class Main extends Activity {
 		final Intent intent = new Intent(Intent.ACTION_SEND);
 
 		intent.setType("text/plain");
-		intent.putExtra(Intent.EXTRA_SUBJECT,
-				getString(R.string.recommand_title));
+		intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.recommand_title));
 		intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.recommand_text));
 
-		startActivity(Intent.createChooser(intent,
-				getString(R.string.recommand_share_title)));
+		startActivity(Intent.createChooser(intent, getString(R.string.recommand_share_title)));
 	}
 
 	private void rate() {
 		try {
-			Intent goToMarket = new Intent(Intent.ACTION_VIEW,
-					Uri.parse("market://details?id=pro.schmid.android.solde"));
+			Intent goToMarket = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=pro.schmid.android.solde"));
 			startActivity(goToMarket);
 		} catch (Exception e) {
 			Toast.makeText(this, R.string.no_market, Toast.LENGTH_LONG);
@@ -158,8 +150,7 @@ public class Main extends Activity {
 				pb.setVisibility(View.VISIBLE);
 
 				// Move the button
-				Animation anim = AnimationUtils.loadAnimation(getApplication(),
-						R.anim.move_button_go);
+				Animation anim = AnimationUtils.loadAnimation(getApplication(), R.anim.move_button_go);
 				anim.setAnimationListener(new AnimationListener() {
 
 					@Override
@@ -177,24 +168,20 @@ public class Main extends Activity {
 				});
 				button.startAnimation(anim);
 
-				progress = new Progress(
-						(ProgressBar) findViewById(R.id.progressBar),
-						WAITING_TIME);
+				progress = new Progress((ProgressBar) findViewById(R.id.progressBar), WAITING_TIME);
 				progress.execute(new Void[0]);
 			}
 		});
 	}
 
 	private void requestInfo() {
-		smsManager.sendTextMessage(getResources()
-				.getString(R.string.sms_number), null, "solde", null, null);
+		smsManager.sendTextMessage(getResources().getString(R.string.sms_number), null, "solde", null, null);
 	}
 
 	private void moveButtonBack() {
 		final Button button = (Button) findViewById(R.id.requestButton);
 		button.setEnabled(true);
-		Animation anim = AnimationUtils.loadAnimation(getApplication(),
-				R.anim.move_button_back);
+		Animation anim = AnimationUtils.loadAnimation(getApplication(), R.anim.move_button_back);
 		anim.setAnimationListener(new AnimationListener() {
 
 			@Override
@@ -247,21 +234,15 @@ public class Main extends Activity {
 
 		if (dataMatcher.isValid()) {
 			TextView tv = (TextView) findViewById(R.id.data_monthly_credit_value);
-			String merged = String.format(
-					getResources().getString(R.string.data_unit),
-					dataMatcher.getTotalCredits());
+			String merged = String.format(getResources().getString(R.string.data_unit), dataMatcher.getTotalCredits());
 			tv.setText(merged);
 
 			tv = (TextView) findViewById(R.id.data_remaining_credit_value);
-			merged = String.format(
-					getResources().getString(R.string.data_unit),
-					dataMatcher.getRemainingCredits());
+			merged = String.format(getResources().getString(R.string.data_unit), dataMatcher.getRemainingCredits());
 			tv.setText(merged);
 
 			tv = (TextView) findViewById(R.id.data_remaining_credit_per_day_value);
-			merged = String.format(
-					getResources().getString(R.string.data_unit),
-					dataMatcher.getRemainingPerDay());
+			merged = String.format(getResources().getString(R.string.data_unit), dataMatcher.getRemainingPerDay());
 			tv.setText(merged);
 
 			tv = (TextView) findViewById(R.id.data_valid_until_value);
@@ -279,17 +260,15 @@ public class Main extends Activity {
 		// Nobody catched the message
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
 		b.setTitle(R.string.error_wrongsms_title);
-		String text = String.format(getString(R.string.error_wrongsms_text),
-				data);
+		String text = String.format(getString(R.string.error_wrongsms_text), data);
 		b.setMessage(text);
-		b.setPositiveButton(R.string.too_bad,
-				new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-						moveButtonBack();
-					}
-				});
+		b.setPositiveButton(R.string.too_bad, new DialogInterface.OnClickListener() {
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.dismiss();
+				moveButtonBack();
+			}
+		});
 		b.create().show();
 
 	}
@@ -336,14 +315,13 @@ public class Main extends Activity {
 			AlertDialog.Builder builder = new AlertDialog.Builder(me);
 			builder.setTitle(R.string.error_nosms_title);
 			builder.setMessage(R.string.error_nosms_text);
-			builder.setPositiveButton(R.string.too_bad,
-					new DialogInterface.OnClickListener() {
-						@Override
-						public void onClick(DialogInterface dialog, int which) {
-							dialog.dismiss();
-							moveButtonBack();
-						}
-					});
+			builder.setPositiveButton(R.string.too_bad, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+					moveButtonBack();
+				}
+			});
 			builder.create().show();
 		}
 
@@ -374,8 +352,7 @@ public class Main extends Activity {
 
 			SmsMessage msg = SmsMessage.createFromPdu((byte[]) pdus[0]);
 
-			String number = context.getResources().getString(
-					R.string.sms_number);
+			String number = context.getResources().getString(R.string.sms_number);
 
 			if (!number.equals(msg.getOriginatingAddress())) {
 				return;
