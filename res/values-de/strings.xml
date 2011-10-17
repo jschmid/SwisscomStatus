@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Status Swisscom</string>
+    <string name="title_sms">SMS</string>
+    <string name="title_data">Daten</string>
+    
+    <string name="monthly_credit_title">Guthaben pro Monat</string>
+    <string name="remaining_credit_title">Restguthaben</string>
+    <string name="remaining_credit_per_day_title">Restguthaben pro Tag</string>
+    <string name="valid_until_title">Guthaben gültig bis</string>
+    <string name="state_date_title">Stand</string>
+    
+    <string name="data_unit">%s MB</string>
+    <string name="date_format">dd.MM.yy</string>
+    
+    <string name="sms_number">444</string>
+    
+    <string name="request_button">Informationen abrufen</string>
+    
+    <string name="error_wrongsms_title">Fehler im SMS!</string>
+    <string name="error_wrongsms_text">Das SMS von Swisscom konnte nicht analysiert werden. Der Text lautet wie folgt:\n\n%s</string>
+    
+    <string name="error_nosms_title">Kein SMS empfangen!</string>
+    <string name="error_nosms_text">Swisscom hat auf die Anfrage nicht geantwortet. Die Ursache können Wartungsarbeiten sein. Bitte versuchen Sie es später erneut.</string>
+    
+    <string name="too_bad">Schade.</string>
+    <string name="ok">Ok</string>
+    
+    <string name="recommend">Weiterempfehlen</string>
+    <string name="about">Über</string>
+    
+    <string name="recommand_share_title">Aktion auswählen</string>
+    <string name="recommand_title">Versuche Status Swisscom!</string>
+    <string name="recommand_text">Versuche Status Swisscom, eine Android App welche das Restguthaben von SMS und Datenvolumen abfragt. \n\nhttps://market.android.com/details?id=pro.schmid.android.solde</string>
+    
+    <string name="rate">App bewerten!</string>
+    <string name="no_market">Der Market kann auf diesem Telefon nicht gefunden werden.</string>
+    
+    <string name="about_title">Über</string>
+    <string name="about_text">Die Daten stammen vom Swisscom "STATUS" Service. ©\n\nJonas Schmid\nandroid@schmid.pro</string>
+    
+</resources>
