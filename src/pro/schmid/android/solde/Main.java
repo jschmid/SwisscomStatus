@@ -349,6 +349,11 @@ public class Main extends Activity {
 
 		@Override
 		protected void onPostExecute(Void result) {
+
+			if (result == null || isFinishing()) {
+				return;
+			}
+
 			AlertDialog.Builder builder = new AlertDialog.Builder(me);
 			builder.setTitle(R.string.error_nosms_title);
 			builder.setMessage(R.string.error_nosms_text);
