@@ -3,6 +3,7 @@
     <string name="app_name">Status Swisscom</string>
     <string name="title_sms">SMS</string>
     <string name="title_data">Data</string>
+    <string name="title_voice">Voice</string>
     
     <string name="monthly_credit_title">Monthly credit</string>
     <string name="remaining_credit_title">Remaining credit</string>
@@ -14,6 +15,8 @@
     <string name="date_format">dd.MM.yy</string>
     
     <string name="sms_number">444</string>
+    
+    <string name="voice_unit">%s CHF</string>
     
     <string name="request_button">Get the information</string>
     

@@ -31,7 +31,7 @@ import android.widget.Toast;
 
 public class Main extends Activity {
 
-	private int WAITING_TIME = 15000;
+	private final int WAITING_TIME = 15000;
 
 	@SuppressWarnings("unused")
 	private static String DEBUG_SMS = "NATEL xtra-liberty SMS: crédit mensuel: 100, crédit restant: 19, crédit valable jusqu'au: 01.07.2011, état au 23.06.2011";
@@ -39,10 +39,13 @@ public class Main extends Activity {
 	private static String DEBUG_DATA = "Unités utilisées \"NATEL xtra-liberty mezzo\": crédit mensuel: 500 MB, crédit restant: 324.24 MB, crédit valable jusqu'au: 01.07.2011, état au 23.06.2011";
 	@SuppressWarnings("unused")
 	private static String DEBUG_DATA2 = "NATEL easy Datenpaket : Verbleibendes Datenvolumen 87 MB, gültig bis 08.11.2011 (Stand vom 12.10.2011). Swisscom";
+	@SuppressWarnings("unused")
+	private static String DEBUG_VOICE = "Loyalty Bonus Voice: credito mensile: 8 CHF, Suo credito: 0 CHF, credito valido fino al: 01.03.2012, stato al 26.02.2012";
 
 	private SmsManager smsManager;
 	private ContentMatcher smsMatcher;
 	private ContentMatcher dataMatcher;
+	private ContentMatcher voiceMatcher;
 	private SimpleDateFormat sdf;
 
 	private IntentFilter mIntentFilter;
@@ -152,7 +155,7 @@ public class Main extends Activity {
 			@Override
 			public void onClick(View v) {
 				requestInfo();
-				
+
 				ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar);
 				pb.setVisibility(View.VISIBLE);
 
@@ -177,12 +180,20 @@ public class Main extends Activity {
 
 				progress = new Progress((ProgressBar) findViewById(R.id.progressBar), WAITING_TIME);
 				progress.execute(new Void[0]);
+
+				//				debug();
 			}
 		});
 	}
 
 	private void requestInfo() {
 		smsManager.sendTextMessage(getResources().getString(R.string.sms_number), null, "solde", null, null);
+	}
+
+	private void debug() {
+		parseData(DEBUG_SMS);
+		parseData(DEBUG_DATA);
+		parseData(DEBUG_VOICE);
 	}
 
 	private void moveButtonBack() {
@@ -216,6 +227,7 @@ public class Main extends Activity {
 
 		smsMatcher = new SmsMatcher(data);
 		dataMatcher = new DataMatcher(data);
+		voiceMatcher = new VoiceMatcher(data);
 
 		if (smsMatcher.isValid()) {
 			TextView tv = (TextView) findViewById(R.id.sms_monthly_credit_value);
@@ -264,6 +276,31 @@ public class Main extends Activity {
 			return;
 		}
 
+		if (voiceMatcher.isValid()) {
+			TextView tv = (TextView) findViewById(R.id.voice_monthly_credit_value);
+			String merged = String.format(getResources().getString(R.string.voice_unit), voiceMatcher.getTotalCredits());
+			tv.setText(merged);
+
+			tv = (TextView) findViewById(R.id.voice_remaining_credit_value);
+			merged = String.format(getResources().getString(R.string.voice_unit), voiceMatcher.getRemainingCredits());
+			tv.setText(merged);
+
+			tv = (TextView) findViewById(R.id.voice_remaining_credit_per_day_value);
+			merged = String.format(getResources().getString(R.string.voice_unit), voiceMatcher.getRemainingPerDay());
+			tv.setText(merged);
+
+			tv = (TextView) findViewById(R.id.voice_valid_until_value);
+			tv.setText(sdf.format(voiceMatcher.getValidUntil().getTime()));
+
+			tv = (TextView) findViewById(R.id.voice_state_date_value);
+			tv.setText(sdf.format(voiceMatcher.getStateDate().getTime()));
+
+			LinearLayout ll3 = (LinearLayout) findViewById(R.id.voice_layout_ref);
+			ll3.setVisibility(View.VISIBLE);
+			pb.setVisibility(View.GONE);
+			return;
+		}
+
 		// Nobody catched the message
 		AlertDialog.Builder b = new AlertDialog.Builder(this);
 		b.setTitle(R.string.error_wrongsms_title);
@@ -282,9 +319,9 @@ public class Main extends Activity {
 
 	private class Progress extends AsyncTask<Void, Void, Void> {
 
-		private ProgressBar bar;
-		private int waitingTime;
-		private int interval = 500;
+		private final ProgressBar bar;
+		private final int waitingTime;
+		private final int interval = 500;
 		private int currentTime = 0;
 
 		public Progress(ProgressBar bar, int waitingTime) {
@@ -334,7 +371,7 @@ public class Main extends Activity {
 
 	}
 
-	private BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
+	private final BroadcastReceiver mIntentReceiver = new BroadcastReceiver() {
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
