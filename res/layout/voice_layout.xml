@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="vertical" android:id="@+id/voice_layout" xmlns:android="http://schemas.android.com/apk/res/android" 
+		android:layoutAnimation="@anim/layout_fade">
+    <TextView android:layout_height="wrap_content" android:text="@string/title_voice" android:layout_width="fill_parent" android:id="@+id/voice_title" style="@style/header"></TextView>
+    <TableLayout android:layout_height="wrap_content" android:stretchColumns="0" android:layout_width="match_parent" android:id="@+id/tableLayout_voice">
+        <TableRow android:layout_width="wrap_content" android:id="@+id/tableRow_voice_monthly_credit" android:layout_height="wrap_content" style="@style/table_row">
+            <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/monthly_credit_title" android:id="@+id/voice_monthly_credit_title" style="@style/black"></TextView>
+            <TextView android:layout_height="wrap_content" android:text="" android:layout_width="wrap_content" android:id="@+id/voice_monthly_credit_value" android:gravity="right" style="@style/data_right"></TextView>
+        </TableRow>
+        <TableRow android:layout_width="wrap_content" android:id="@+id/tableRow_voice_remaining_credit" android:layout_height="wrap_content" style="@style/table_row">
+            <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/remaining_credit_title" android:id="@+id/voice_remaining_credit_title" style="@style/black"></TextView>
+            <TextView android:layout_height="wrap_content" android:text="" android:layout_width="wrap_content" android:id="@+id/voice_remaining_credit_value" android:gravity="right" style="@style/data_right"></TextView>
+        </TableRow>
+        <TableRow android:layout_width="wrap_content" android:id="@+id/tableRow_voice_remaining_credit_per_day" android:layout_height="wrap_content" style="@style/table_row">
+            <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/remaining_credit_per_day_title" android:id="@+id/voice_remaining_credit_per_day_title" style="@style/black"></TextView>
+            <TextView android:layout_height="wrap_content" android:text="" android:layout_width="wrap_content" android:id="@+id/voice_remaining_credit_per_day_value" android:gravity="right" style="@style/data_right"></TextView>
+        </TableRow>
+        <TableRow android:layout_width="wrap_content" android:id="@+id/tableRow_voice_valid_until" android:layout_height="wrap_content" style="@style/table_row">
+            <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/valid_until_title" android:id="@+id/voice_valid_until_title" style="@style/black"></TextView>
+            <TextView android:layout_height="wrap_content" android:text="" android:layout_width="wrap_content" android:id="@+id/voice_valid_until_value" android:gravity="right" style="@style/data_right"></TextView>
+        </TableRow>
+        <TableRow android:layout_width="wrap_content" android:id="@+id/tableRow_voice_state_date" android:layout_height="wrap_content" style="@style/table_row">
+            <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:text="@string/state_date_title" android:id="@+id/voice_state_date_title" style="@style/black"></TextView>
+            <TextView android:layout_height="wrap_content" android:text="" android:layout_width="wrap_content" android:id="@+id/voice_state_date_value" android:gravity="right" style="@style/data_right"></TextView>
+        </TableRow>
+    </TableLayout>
+</LinearLayout>
