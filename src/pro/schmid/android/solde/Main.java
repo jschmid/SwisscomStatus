@@ -33,19 +33,8 @@ public class Main extends Activity {
 
 	private final int WAITING_TIME = 15000;
 
-	@SuppressWarnings("unused")
-	private static String DEBUG_SMS = "NATEL xtra-liberty SMS: crédit mensuel: 100, crédit restant: 19, crédit valable jusqu'au: 01.07.2011, état au 23.06.2011";
-	@SuppressWarnings("unused")
-	private static String DEBUG_DATA = "Unités utilisées \"NATEL xtra-liberty mezzo\": crédit mensuel: 500 MB, crédit restant: 324.24 MB, crédit valable jusqu'au: 01.07.2011, état au 23.06.2011";
-	@SuppressWarnings("unused")
-	private static String DEBUG_DATA2 = "NATEL easy Datenpaket : Verbleibendes Datenvolumen 87 MB, gültig bis 08.11.2011 (Stand vom 12.10.2011). Swisscom";
-	@SuppressWarnings("unused")
-	private static String DEBUG_VOICE = "Loyalty Bonus Voice: credito mensile: 8 CHF, Suo credito: 0 CHF, credito valido fino al: 01.03.2012, stato al 26.02.2012";
-
 	private SmsManager smsManager;
-	private ContentMatcher smsMatcher;
-	private ContentMatcher dataMatcher;
-	private ContentMatcher voiceMatcher;
+
 	private SimpleDateFormat sdf;
 
 	private IntentFilter mIntentFilter;
@@ -53,6 +42,10 @@ public class Main extends Activity {
 	private Progress progress;
 
 	private Main me;
+
+	private ContentMatcher smsMatcher;
+	private ContentMatcher dataMatcher;
+	private ContentMatcher voiceMatcher;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -154,7 +147,7 @@ public class Main extends Activity {
 		button.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				requestInfo();
+				//				requestInfo();
 
 				ProgressBar pb = (ProgressBar) findViewById(R.id.progressBar);
 				pb.setVisibility(View.VISIBLE);
@@ -181,7 +174,7 @@ public class Main extends Activity {
 				progress = new Progress((ProgressBar) findViewById(R.id.progressBar), WAITING_TIME);
 				progress.execute(new Void[0]);
 
-				//				debug();
+				debug();
 			}
 		});
 	}
@@ -191,9 +184,9 @@ public class Main extends Activity {
 	}
 
 	private void debug() {
-		parseData(DEBUG_SMS);
-		parseData(DEBUG_DATA);
-		parseData(DEBUG_VOICE);
+		parseData(Debug.DEBUG_SMS);
+		parseData(Debug.DEBUG_DATA);
+		parseData(Debug.DEBUG_VOICE);
 	}
 
 	private void moveButtonBack() {
